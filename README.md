@@ -6,6 +6,15 @@ You can upload images, preview them on the page, give your own name to the PDF, 
 
 ---
 
+## 🎬 Output Demo
+
+<!-- GitHub renders HTML in README, so we use a <video> tag with the RAW file URL -->
+<video src="https://raw.githubusercontent.com/Prajnapunya09/Image-to-PDF-Converter/main/output%20vedio(image%20to%20pdf%20converter).mp4" controls width="100%" title="Image to PDF Converter - Output Demo"></video>
+
+> If the video doesn’t load in your viewer, [click here to watch it](https://raw.githubusercontent.com/Prajnapunya09/Image-to-PDF-Converter/main/output%20vedio(image%20to%20pdf%20converter).mp4).
+
+---
+
 ## Features
 
 - Upload multiple images (JPG, PNG, etc.)
@@ -28,9 +37,9 @@ You can upload images, preview them on the page, give your own name to the PDF, 
 
 ## Built With
 
-- HTML
-- CSS
-- JavaScript
+- HTML  
+- CSS  
+- JavaScript  
 - jsPDF (JavaScript PDF Library)
 
 ---
@@ -41,8 +50,3 @@ Image-to-PDF-Converter/
 ├── index.html
 └── README.md
 
----
-
-## Author
-
-Developed by **Prajnapunya09**
