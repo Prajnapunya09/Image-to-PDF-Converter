@@ -11,7 +11,7 @@ A simple and lightweight **Image to PDF Converter** built using **HTML, CSS, and
 ✅ Convert images into a single PDF  
 ✅ Auto page size adjustment  
 ✅ Custom PDF filename option  
-✅ 100% client-side (no backend needed)  
+✅ 100% client-side 
 ✅ Fast, secure & easy to use  
 
 ---
