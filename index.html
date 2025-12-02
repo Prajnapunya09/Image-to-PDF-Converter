@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Scanner</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  width: 350px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(128,128,128,0.267);
+  border-radius: 5px;
+  border-bottom: 5px solid rgb(43,133,100);
+}
+input {
+  width: 100%;
+  border: 1px dashed rgb(43,133,100);
+  padding: 15px;
+  color: rgb(43,133,100);
+  margin-top: 10px;
+}
+input::file-selector-button {
+  background-color: rgb(43,133,100);
+  border: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background-color: rgb(43,133,100);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input::file-selector-button:hover,
+button:hover {
+  opacity: 0.7;
+}
+#images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+#images img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0px 0px 5px gray;
+}
+</style>
+</head>
+<body>
+<section class="container">
+<form>
+<label for="fileInput">Select Images</label>
+<input type="file" accept="image/*" multiple id="fileInput">
+<button type="button" onclick="PDFCreateHandler()">Convert to PDF</button>
+<div id="images"></div>
+</form>
+</section>
+<script>
+const imagesContainer = document.getElementById('images')
+const fileInput = document.getElementById('fileInput')
+const allImages = []
+
+fileInput.onchange = function() {
+  imagesContainer.innerHTML = ''
+  allImages.length = 0
+  for (let i = 0; i < fileInput.files.length; i++) {
+    const reader = new FileReader()
+    reader.readAsDataURL(fileInput.files[i])
+    reader.onload = function() {
+      const img = new Image()
+      img.src = reader.result
+      allImages.push(img)
+      img.onload = function() {
+        imagesContainer.appendChild(img)
+      }
+    }
+  }
+}
+
+function PDFCreateHandler() {
+  const { jsPDF } = window.jspdf
+  const pdf = new jsPDF()
+  if (allImages.length == 0) {
+    alert('Please select images')
+    return
+  }
+  allImages.forEach((image, i) => {
+    const pageWidth = pdf.internal.pageSize.getWidth()
+    const pageHeight = (image.height * pageWidth) / image.width
+    if (i > 0) pdf.addPage()
+    pdf.addImage(image, 'JPEG', 0, 0, pageWidth, pageHeight)
+  })
+  const name = prompt('Save PDF as..', 'scanned_document')
+  pdf.save(`${name}.pdf`)
+}
+</script>
+</body>
+</html>
