@@ -39,5 +39,4 @@ A simple and lightweight **Image to PDF Converter** built using **HTML, CSS, and
 
 ## 📂 Project Structure  
 image-to-pdf/
-│
 ├── index.html
