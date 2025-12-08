@@ -18,7 +18,7 @@ A simple and lightweight **Image to PDF Converter** built using **HTML, CSS, and
 
 ## 🛠️ Technologies Used  
 
-- 🌐 HTML5  
+-  🌐 HTML5  
 - 🎨 CSS3  
 - ⚙️ JavaScript  
 - 📚 jsPDF Library  
